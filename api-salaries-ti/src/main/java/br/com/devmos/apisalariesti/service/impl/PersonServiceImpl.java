@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.devmos.apisalariesti.model.Person;
 import br.com.devmos.apisalariesti.model.PersonDTO;
 import br.com.devmos.apisalariesti.model.request.PersonRequestDTO;
+import br.com.devmos.apisalariesti.model.response.PersonSavedResponseDTO;
 import br.com.devmos.apisalariesti.repository.PersonRepository;
 import br.com.devmos.apisalariesti.service.PersonService;
 import jakarta.persistence.EntityNotFoundException;
@@ -46,7 +47,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	@Transactional
-	public void savePerson(PersonRequestDTO request) {
+	public PersonSavedResponseDTO savePerson(PersonRequestDTO request) {
 		Person person = Person.builder().age(request.getAge())
 										.educationLevel(request.getEducationLevel())
 										.gender(request.getGender())
@@ -55,7 +56,11 @@ public class PersonServiceImpl implements PersonService {
 										.yearsOfExperience(request.getYearsOfExperience())
 										.build();
 		
-		personRepository.save(person);
+		Person personSaved = personRepository.save(person);
+		
+		return PersonSavedResponseDTO.builder()
+				.id(personSaved.getId())
+				.build();
 	}
 
 }

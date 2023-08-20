@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.devmos.apisalariesti.model.PersonDTO;
 import br.com.devmos.apisalariesti.model.request.PersonRequestDTO;
+import br.com.devmos.apisalariesti.model.response.PersonSavedResponseDTO;
 import br.com.devmos.apisalariesti.service.PersonService;
 import lombok.extern.log4j.Log4j2;
 
@@ -43,10 +44,10 @@ public class PersonController {
 	}
 	
 	@PostMapping()
-	public ResponseEntity<Void> savePerson(@RequestBody PersonRequestDTO request) {
+	public ResponseEntity<PersonSavedResponseDTO> savePerson(@RequestBody PersonRequestDTO request) {
 		log.info("Request Save Person: {}", request);
-		personService.savePerson(request);
-		log.info("Successfully saved person");
-		return ResponseEntity.ok().build();
+		PersonSavedResponseDTO response = personService.savePerson(request);
+		log.info("Successfully saved person {}", response);
+		return ResponseEntity.ok(response);
 	}
 }

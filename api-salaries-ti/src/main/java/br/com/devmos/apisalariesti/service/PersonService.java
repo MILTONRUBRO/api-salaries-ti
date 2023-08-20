@@ -4,11 +4,12 @@ import java.util.List;
 
 import br.com.devmos.apisalariesti.model.PersonDTO;
 import br.com.devmos.apisalariesti.model.request.PersonRequestDTO;
+import br.com.devmos.apisalariesti.model.response.PersonSavedResponseDTO;
 
 public interface PersonService {
 	
 	List<PersonDTO> getAll();
 	PersonDTO getPerson(Long id);
-	void savePerson(PersonRequestDTO request);
+	PersonSavedResponseDTO savePerson(PersonRequestDTO request);
 
 }

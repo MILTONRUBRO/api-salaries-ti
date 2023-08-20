@@ -12,5 +12,6 @@ public interface PersonService {
 	PersonDTO getPerson(Long id);
 	PersonSavedResponseDTO savePerson(PersonRequestDTO request);
 	List<PersonDTO> getByGender(String gender);
+	void deletPerson(Long id);
 
 }

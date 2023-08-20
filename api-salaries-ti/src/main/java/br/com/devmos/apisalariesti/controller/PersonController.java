@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +58,14 @@ public class PersonController {
 		log.info("Get All Persons by Gender");
 		log.info("Response {}", persons);
 		return ResponseEntity.ok(persons);
+	}
+	
+	@DeleteMapping("/{personId}")
+	public ResponseEntity<Void> deletPerson(@PathVariable("personId") Long personId) {
+		log.info("Request Delet Person ID: {}", personId);
+		personService.deletPerson(personId);
+		log.info("Successfully deleted person");
+		return ResponseEntity.noContent().build();
 	}
 	
 }

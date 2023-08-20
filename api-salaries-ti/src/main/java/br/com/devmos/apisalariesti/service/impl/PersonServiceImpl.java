@@ -69,4 +69,17 @@ public class PersonServiceImpl implements PersonService {
 		return  PersonDTO.toDtos(persons);
 	}
 
+	@Override
+	@Transactional
+	public void deletPerson(Long id) {
+		Optional<Person> optionalPerson = personRepository.findById(id);
+		
+		if(optionalPerson.isEmpty()) {
+			throw new EntityNotFoundException("Pessoa não encontrada");
+		}
+		
+		personRepository.delete(optionalPerson.get());
+		
+	}
+
 }

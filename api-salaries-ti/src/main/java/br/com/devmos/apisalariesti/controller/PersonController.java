@@ -50,4 +50,13 @@ public class PersonController {
 		log.info("Successfully saved person {}", response);
 		return ResponseEntity.ok(response);
 	}
+	
+	@GetMapping("/genders/{gender}")
+	public ResponseEntity<List<PersonDTO>> getPersonsByGender(@PathVariable("gender") String gender) {
+		List<PersonDTO> persons = personService.getByGender(gender);
+		log.info("Get All Persons by Gender");
+		log.info("Response {}", persons);
+		return ResponseEntity.ok(persons);
+	}
+	
 }

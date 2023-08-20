@@ -63,4 +63,10 @@ public class PersonServiceImpl implements PersonService {
 				.build();
 	}
 
+	@Override
+	public List<PersonDTO> getByGender(String gender) {
+		List<Person> persons = personRepository.findByGenderIgnoreCase(gender);
+		return  PersonDTO.toDtos(persons);
+	}
+
 }

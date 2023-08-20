@@ -11,5 +11,6 @@ public interface PersonService {
 	List<PersonDTO> getAll();
 	PersonDTO getPerson(Long id);
 	PersonSavedResponseDTO savePerson(PersonRequestDTO request);
+	List<PersonDTO> getByGender(String gender);
 
 }

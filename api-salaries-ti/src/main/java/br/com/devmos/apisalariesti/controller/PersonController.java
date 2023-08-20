@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -68,5 +69,14 @@ public class PersonController {
 		log.info("Successfully deleted person");
 		return ResponseEntity.noContent().build();
 	}
+	
+	@PutMapping("/{personId}")
+	public ResponseEntity<Void> updatePerson(@PathVariable("personId") Long personId , @RequestBody @Valid PersonRequestDTO request) {
+		log.info("Request Update ID: {} Person: {} ", personId, request);
+		personService.updatePerson(personId, request);
+		log.info("Successfully updated person");
+		return ResponseEntity.ok().build();
+	}
+	
 	
 }

@@ -2,7 +2,6 @@ package br.com.devmos.apisalariesti.model.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +18,6 @@ import lombok.ToString;
 public class PersonRequestDTO {
 	
 	@NotNull(message = "A idade não pode ser nula")
-	@Size(min = 18)
 	private int age;
 	
 	@NotBlank(message = "O genero não pode ser vazio")

@@ -82,4 +82,24 @@ public class PersonServiceImpl implements PersonService {
 		
 	}
 
+	@Override
+	@Transactional
+	public void updatePerson(Long id, PersonRequestDTO request) {
+		Optional<Person> optionalPerson = personRepository.findById(id);
+		
+		if(optionalPerson.isEmpty()) {
+			throw new EntityNotFoundException("Pessoa não encontrada");
+		}
+		
+		optionalPerson.get().setAge(request.getAge());
+		optionalPerson.get().setEducationLevel(request.getEducationLevel());
+		optionalPerson.get().setGender(request.getGender());
+		optionalPerson.get().setJobTitle(request.getJobTitle());
+		optionalPerson.get().setSalary(request.getSalary());
+		optionalPerson.get().setYearsOfExperience(request.getYearsOfExperience());
+		
+		personRepository.save(optionalPerson.get());
+		
+	}
+
 }

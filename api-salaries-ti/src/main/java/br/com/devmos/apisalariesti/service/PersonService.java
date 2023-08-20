@@ -13,5 +13,6 @@ public interface PersonService {
 	PersonSavedResponseDTO savePerson(PersonRequestDTO request);
 	List<PersonDTO> getByGender(String gender);
 	void deletPerson(Long id);
+	void updatePerson(Long id, PersonRequestDTO request);
 
 }

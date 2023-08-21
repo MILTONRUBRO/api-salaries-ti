@@ -1,7 +1,5 @@
 package br.com.devmos.apisalariesti.model.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,7 +23,6 @@ public class UsuarioRequestDTO {
     @Email
     private String email;
 
-    @JsonProperty("password")
     @NotBlank(message = "Password é obrigatório")
     @Size(min = 8, max = 64, message = "Password deve conter de 8 a 64 caracteres")
     private String pass;

@@ -28,9 +28,9 @@ public class SecurityConfig {
 
 					.requestMatchers(AntPathRequestMatcher.antMatcher("/auth")).permitAll()
 
-					.requestMatchers(new AntPathRequestMatcher("/usuario")).permitAll()
+					.requestMatchers(new AntPathRequestMatcher("/usuario/**")).permitAll()
 
-					.requestMatchers(new AntPathRequestMatcher("/persons")).authenticated();
+					.requestMatchers(new AntPathRequestMatcher("/persons/**")).authenticated();
 		}).httpBasic(Customizer.withDefaults());
 
 		return http.build();
